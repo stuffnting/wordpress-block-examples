@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "version": "1.0.0",
+  "name": "snt/block-binding-meta-box",
+  "title": "SNT Block Binding Meta Box",
+  "category": "snt-custom-cat",
+  "description": "A dummy block to provide and entry point.",
+  "icon": "lightbulb",
+  "supports": {
+    "html": false,
+    "inserter": false
+  },
+  "attributes": {
+    "snt": {
+      "type": "string",
+      "_comment": "The meta field key must not be private, i.e. must not start with `_`",
+      "metaField": "snt_block_binding_meta_box_field"
+    }
+  },
+  "editorScript": "file:./block-binding-meta-box.js"
+}

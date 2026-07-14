@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "version": "1.0.0",
+  "name": "snt/block-binding-custom-source-pattern",
+  "title": "SNT Block Binding Custom Source With Pattern",
+  "description": "A dummy block to provide and entry point.",
+  "category": "snt-custom-cat",
+  "icon": "lightbulb",
+  "supports": {
+    "html": false,
+    "inserter": true
+  },
+  "editorScript": "file:./block-binding-custom-source-pattern.js"
+}

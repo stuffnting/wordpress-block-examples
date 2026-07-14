@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "version": "1.0.0",
+  "name": "snt/block-collection",
+  "title": "SNT Block Collection",
+  "description": "A dummy block to provide and entry point.",
+  "category": "snt-custom-cat",
+  "icon": "lightbulb",
+  "supports": {
+    "html": false,
+    "inserter": false
+  },
+  "editorScript": "file:./block-collection.js"
+}

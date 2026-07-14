@@ -1,0 +1,32 @@
+{
+  "block-binding-custom-source-pattern": {
+    "include": false
+  },
+  "block-binding-custom-source-ui": {
+    "include": false
+  },
+  "block-binding-meta-box": {
+    "include": false
+  },
+  "block-binding-variations": {
+    "include": false
+  },
+  "block-collection": {
+    "include": false
+  },
+  "block-json-assets": {
+    "include": false
+  },
+  "block-patterns": {
+    "include": false
+  },
+  "dynamic-block-render-file": {
+    "include": false
+  },
+  "dynamic-block-render-function": {
+    "include": false
+  },
+  "php-only-registration": {
+    "include": true
+  }
+}

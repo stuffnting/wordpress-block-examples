@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "version": "1.0.0",
+  "name": "snt/dynamic-block-render-function",
+  "title": "SNT Dynamic Block Render Function",
+  "category": "snt-custom-cat",
+  "icon": "lightbulb",
+  "attributes": {
+    "pagesToShow": {
+      "type": "number",
+      "default": 5
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./dynamic-block-render-function.js"
+}

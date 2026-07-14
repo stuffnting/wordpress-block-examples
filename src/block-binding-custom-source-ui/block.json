@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "version": "1.0.0",
+  "name": "snt/block-binding-custom-source-ui",
+  "title": "SNT Block Binding Custom Source With UI Controls",
+  "description": "A dummy block to provide and entry point.",
+  "category": "snt-custom-cat",
+  "icon": "lightbulb",
+  "supports": {
+    "html": false,
+    "inserter": false
+  },
+  "editorScript": "file:./block-binding-custom-source-ui.js"
+}

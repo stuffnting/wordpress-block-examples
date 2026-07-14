@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "version": "1.0.0",
+  "name": "snt/block-json-assets",
+  "title": "SNT Block JSON Assets",
+  "category": "snt-custom-cat",
+  "icon": "lightbulb",
+  "editorScript": "file:./block-json-assets.js",
+  "editorStyle": "file:./block-json-assets.css",
+  "script": "file:./script.js",
+  "style": "file:./style-block-json-assets.css",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
+}
