@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "name": "snt/block-json-assets",
   "title": "SNT Block JSON Assets",
-  "category": "snt-custom-cat",
+  "category": "snt-block-category",
   "icon": "lightbulb",
   "editorScript": "file:./block-json-assets.js",
   "editorStyle": "file:./block-json-assets.css",

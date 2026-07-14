@@ -10,7 +10,7 @@ add_filter("block_categories_all", "snt_register_block_categories");
 function snt_register_block_categories($block_categories) {
   $custom_categories = [
     [
-      "slug" => "snt-custom-cat",
+      "slug" => "snt-block-category",
       "title" => "SNT Blocks"
     ]
   ];

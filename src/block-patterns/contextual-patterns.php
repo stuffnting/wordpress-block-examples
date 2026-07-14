@@ -31,7 +31,7 @@ function snt_register_block_contextual_patterns() {
     )
   );
 
-  $snt_image_and_text_contextual_content = '<!-- wp:group {"metadata":{"categories":["text"],"patternName":"myprefix/image-and-text","name":"Images and text in columns"},"align":"full"} -->
+  $snt_image_and_text_contextual_content = '<!-- wp:group {"metadata":{"categories":["text"],"patternName":"snt/image-and-text","name":"Images and text in columns"},"align":"full"} -->
 <div class="wp-block-group alignfull"><!-- wp:columns {"verticalAlignment":"top","align":"full"} -->
 <div class="wp-block-columns alignfull are-vertically-aligned-top"><!-- wp:column {"verticalAlignment":"top"} -->
 <div class="wp-block-column is-vertically-aligned-top"><!-- wp:image {"sizeSlug":"large"} -->

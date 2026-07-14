@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "wp-scripts build  --webpack-copy-php ",
-    "start": "wp-scripts start --webpack-copy-php --output-path=$HOME'/WP Test 1/app/public/wp-content/plugins/new-block-examples'",
+    "start": "wp-scripts start  --output-path=$HOME'/WP Test 1/app/public/wp-content/plugins/new-block-examples'",
     "check-engines": "wp-scripts check-engines",
     "check-licenses": "wp-scripts check-licenses",
     "format": "wp-scripts format",

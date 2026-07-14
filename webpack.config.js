@@ -1,64 +1,101 @@
 import defaultConfig from "@wordpress/scripts/config/webpack.config.js";
 import CopyWebpackPlugin from "copy-webpack-plugin";
-import path from "path";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 
-// Recreate __filename and __dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Read and parse the build list JSON safely
+// Read and parse the build-list.json safely
 const exampleJSON = readFileSync(new URL("./src/build-list.json", import.meta.url), "utf8");
 const exampleList = JSON.parse(exampleJSON);
 
-// FIX 1: Push plain strings, not arrays
-const omitFromBuildList = Object.entries(exampleList).reduce((acc, [exampleName, details]) => {
-  if (details.include) {
-    return acc;
-  }
+/**
+ * Make a lists of examples to include and omit
+ */
+const processedExampleList = Object.entries(exampleList).reduce(
+  (acc, [exampleName, details]) => {
+    const { include, omit } = acc;
 
-  // Push just the string name
-  acc.push(exampleName);
-
-  return acc;
-}, []);
-
-export default (env, argv) => {
-  // FIX 2: Evaluate defaultConfig as a function if needed
-  const config = typeof defaultConfig === "function" ? defaultConfig(env, argv) : defaultConfig;
-
-  // Determine correct output path safely
-  const outputPath = argv.outputPath || config.output?.path || path.resolve(__dirname, "build");
-
-  const plugins = [
-    ...(config.plugins || []),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, "src/build-list.json"),
-          to: path.resolve(outputPath, "build-list.json"),
-        },
-      ],
-    }),
-  ];
-
-  const defaultBuildList = typeof config.entry === "function" ? config.entry() : config.entry;
-
-  const filteredBuildList = Object.keys(defaultBuildList).reduce((acc, entryName) => {
-    // Check if the current entry path matches any omitted folder name
-    const shouldOmit = omitFromBuildList.some((folder) => entryName.includes(folder));
-
-    if (!shouldOmit) {
-      acc[entryName] = defaultBuildList[entryName];
+    if (details.include) {
+      return { include: [...include, exampleName], omit };
     }
 
-    return acc;
-  }, {});
+    return { include, omit: [...omit, exampleName] };
+  },
+  { include: [], omit: [] },
+);
 
+const omitFromBuildList = processedExampleList.omit;
+const includeInBuildList = processedExampleList.include;
+
+/**
+ * Make a new entry point list
+ */
+const defaultEntryPoints = defaultConfig.entry();
+
+// Remove examples in the omit list from WP's default entry point list
+const filteredEntryPoints = Object.keys(defaultEntryPoints).reduce((acc, entryName) => {
+  // Check if the current entry path matches any omitted folder name
+  const shouldOmit = omitFromBuildList.some((folder) => entryName.includes(folder));
+
+  if (!shouldOmit) {
+    acc[entryName] = defaultEntryPoints[entryName];
+  }
+
+  return acc;
+}, {});
+
+/**
+ * Make new copyPlugin patterns
+ */
+const staticCopy = [
+  {
+    from: "build-list.json",
+    context: "src",
+    noErrorOnMissing: false,
+  },
+  {
+    from: "index.php",
+    context: "src",
+    noErrorOnMissing: false,
+  },
+];
+
+// Get the original JSON pattern so that the original transform function can be used
+const jsonPattern = defaultConfig.plugins[2].patterns[0];
+
+// Make a list of copy patterns for the block.json and *.php files in the included examples only
+const copyPatterns = includeInBuildList.reduce((acc, example) => {
+  return [
+    ...acc,
+    {
+      ...jsonPattern,
+      from: `${example}/**/block.json`,
+    },
+    {
+      from: `${example}/**/*.php`,
+      context: "src",
+      noErrorOnMissing: false,
+    },
+  ];
+}, []);
+
+// Remove WP's default copyPlugin entry
+const filteredPlugins = defaultConfig.plugins.filter((plugin) => plugin.constructor.name !== "CopyPlugin");
+
+// Make a new copyPlugin
+const newPlugins = [
+  ...filteredPlugins,
+  new CopyWebpackPlugin({
+    patterns: [...copyPatterns, ...staticCopy],
+  }),
+];
+
+/**
+ * Export
+ */
+export default (env, argv) => {
   return {
-    ...config,
-    entry: filteredBuildList, // Pass the static filtered object directly
-    plugins: plugins,
+    ...defaultConfig,
+    entry: filteredEntryPoints, // Pass the static filtered object directly
+    plugins: newPlugins,
   };
 };

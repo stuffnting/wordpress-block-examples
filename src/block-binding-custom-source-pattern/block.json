@@ -5,7 +5,7 @@
   "name": "snt/block-binding-custom-source-pattern",
   "title": "SNT Block Binding Custom Source With Pattern",
   "description": "A dummy block to provide and entry point.",
-  "category": "snt-custom-cat",
+  "category": "snt-block-category",
   "icon": "lightbulb",
   "supports": {
     "html": false,

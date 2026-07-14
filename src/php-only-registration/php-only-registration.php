@@ -12,7 +12,7 @@ function snt_php_only_registration() {
     array(
       'api_version' => 3,
       'title' => __('SNT PHP Only Registration', 'snt'),
-      'category' => 'snt-custom-cat',
+      'category' => 'snt-block-category',
       'icon' => 'lightbulb',
       'attributes' => array(
         'title'     => array(

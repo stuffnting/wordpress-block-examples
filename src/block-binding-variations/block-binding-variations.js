@@ -6,7 +6,7 @@ registerBlockVariation("core/group", {
   title: __("SNT Block Binding Variations", "snt"),
   description: __("SNT test block binding variations.", "snt"),
   icon: "lightbulb",
-  category: "snt-custom-cat",
+  category: "snt-block-category",
   scope: ["inserter"], // Appears in the inserter as if it were a separate block.
   attributes: {
     templateLock: "all",

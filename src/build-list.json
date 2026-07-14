@@ -14,11 +14,14 @@
   "block-collection": {
     "include": false
   },
-  "block-json-assets": {
+  "block-editor-settings": {
     "include": false
   },
+  "block-json-assets": {
+    "include": true
+  },
   "block-patterns": {
-    "include": false
+    "include": true
   },
   "dynamic-block-render-file": {
     "include": false
@@ -27,6 +30,6 @@
     "include": false
   },
   "php-only-registration": {
-    "include": true
+    "include": false
   }
 }

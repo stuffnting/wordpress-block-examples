@@ -2,14 +2,14 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "version": "1.0.0",
-  "name": "snt/block-collection",
-  "title": "SNT Block Collection",
-  "description": "A dummy block to provide and entry point.",
+  "name": "snt/block-editor-settings",
+  "title": "SNT Block Binding Meta Box",
   "category": "snt-block-category",
+  "description": "A dummy block to provide and entry point.",
   "icon": "lightbulb",
   "supports": {
     "html": false,
     "inserter": false
   },
-  "editorScript": "file:./block-collection.js"
+  "editorScript": "file:./block-editor-settings.js"
 }

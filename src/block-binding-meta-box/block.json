@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "name": "snt/block-binding-meta-box",
   "title": "SNT Block Binding Meta Box",
-  "category": "snt-custom-cat",
+  "category": "snt-block-category",
   "description": "A dummy block to provide and entry point.",
   "icon": "lightbulb",
   "supports": {
