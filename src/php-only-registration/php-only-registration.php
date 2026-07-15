@@ -33,22 +33,29 @@ function snt_php_only_registration() {
         'size'    => array(
           'label'     => __('Size', 'snt'),
           'type'      => 'string',
-          'enum'      => array('small', 'medium', 'large'),
+          'enum'      => array('small', 'medium', 'large', 'x-large', 'xx-large'),
           'default'   => 'medium',
         ),
       ),
-
-      'render_callback' => function ($attributes) {
-        return sprintf(
-          __('<p>%s: %d items (%s)</p>', 'snt'),
-          esc_html($attributes['title']),
-          $attributes['count'],
-          $attributes['size']
-        );
-      },
-      'supports'       => array(
-        'autoRegister' => true,
+      'supports'        => array(
+        'autoRegister'  => true, // Required
+        'color'       => array(
+          'background'  => true,
+          'text' => true
+        ),
       ),
+      'render_callback' => 'snt_php_only_registration_cb',
     )
+  );
+};
+
+function snt_php_only_registration_cb($attributes) {
+  return sprintf(
+    __('<div %s><p style="font-size: %s;">%s: %d items (%s)</p></div>', 'snt'),
+    get_block_wrapper_attributes(),
+    esc_attr($attributes['size']),
+    esc_html($attributes['title']),
+    $attributes['count'],
+    $attributes['size']
   );
 }

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "snt/dynamic-block-inspector-controls-supports",
+  "title": "SNT Dynamic Inspector Controls Supports",
+  "icon": "lightbulb",
+  "category": "snt-block-category",
+  "description": "Dynamic block with inspector controls and 'supports' that related to the appearance of the block.",
+  "supports": {
+    "spacing": {
+      "margin": true,
+      "padding": true,
+      "blockGap": false
+    }
+  },
+  "attributes": {
+    "_comment": {
+      "type": "string",
+      "_comment": "// All attributes are for the InspectorControls. The block's contents are Dynamic, and not stored."
+    },
+    "showTitle": {
+      "_comment": "// Toggle button",
+      "type": "boolean",
+      "default": true
+    },
+    "title": {
+      "_comment": "// TextControl",
+      "type": "string",
+      "default": "A list of posts"
+    },
+    "font": {
+      "_comment": "// SelectControl - dropdown",
+      "type": "string",
+      "default": "sans-serif"
+    },
+    "underline": {
+      "_comment": "// CheckboxControl",
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "editorScript": "file:./dynamic-block-inspector-controls-supports.index.js",
+  "style": "file:./style-dynamic-block-inspector-controls-supports.index.css",
+  "render": "file:./render.php"
+}

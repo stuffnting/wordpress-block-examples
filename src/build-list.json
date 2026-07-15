@@ -18,10 +18,10 @@
     "include": false
   },
   "block-json-assets": {
-    "include": true
+    "include": false
   },
   "block-patterns": {
-    "include": true
+    "include": false
   },
   "dynamic-block-render-file": {
     "include": false
@@ -29,7 +29,13 @@
   "dynamic-block-render-function": {
     "include": false
   },
-  "php-only-registration": {
+  "dynamic-block-inner-blocks": {
     "include": false
+  },
+  "dynamic-block-inspector-controls-supports": {
+    "include": true
+  },
+  "php-only-registration": {
+    "include": true
   }
 }

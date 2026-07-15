@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "snt/dynamic-block-inner-blocks",
+  "title": "Dynamic Inner Blocks",
+  "description": "Dynamic block that has a date picker in the Inspector Controls, and also allows inner-blocks",
+  "icon": "lightbulb",
+  "category": "snt-block-category",
+  "editorScript": "file:./dynamic-block-inner-blocks.js",
+  "style": "file:./style-dynamic-block-inner-blocks.css",
+  "render": "file:./render.php"
+}
