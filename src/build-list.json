@@ -24,7 +24,7 @@
     "include": false
   },
   "custom-icon": {
-    "include": true
+    "include": false
   },
   "dynamic-block-controls-supports": {
     "include": false
@@ -43,5 +43,8 @@
   },
   "php-only-registration": {
     "include": false
+  },
+  "richtext": {
+    "include": true
   }
 }

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "snt/richtext-multi-components",
+  "title": "SNT RichText",
+  "icon": "lightbulb",
+  "category": "snt-block-category",
+  "description": "Uses multiple RichText components in one block.",
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "source": "html",
+      "selector": "header h1",
+      "default": ""
+    },
+    "content": {
+      "type": "string",
+      "source": "html",
+      "selector": "section p",
+      "default": ""
+    },
+    "footer": {
+      "type": "string",
+      "source": "html",
+      "selector": "footer p",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./richtext.js"
+}
