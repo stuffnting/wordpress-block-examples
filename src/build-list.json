@@ -23,19 +23,22 @@
   "block-patterns": {
     "include": false
   },
+  "custom-icon": {
+    "include": true
+  },
   "dynamic-block-controls-supports": {
+    "include": false
+  },
+  "dynamic-block-inner-blocks": {
     "include": false
   },
   "dynamic-block-render-file": {
     "include": false
   },
   "dynamic-block-render-function": {
-    "include": true
-  },
-  "dynamic-blocks-server-v-js-render": {
     "include": false
   },
-  "dynamic-block-inner-blocks": {
+  "dynamic-blocks-server-v-js-render": {
     "include": false
   },
   "php-only-registration": {

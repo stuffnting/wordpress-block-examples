@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "version": "1.0.0",
+  "name": "snt/custom-icon",
+  "title": "SNT Custom Icon",
+  "description": "Demonstrates how to add a custom icon to a block's listing in the inserter.",
+  "category": "snt-block-category",
+  "icon": "lightbulb",
+  "editorScript": "file:./custom-icon.js",
+  "style": "file:./style-custom-icon.css"
+}
