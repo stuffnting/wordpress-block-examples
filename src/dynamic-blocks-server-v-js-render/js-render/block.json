@@ -2,8 +2,8 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "version": "1.0.0",
-  "name": "snt/dynamic-block-render-file",
-  "title": "SNT Dynamic Block Render FileServer-Side render",
+  "name": "snt/js-render",
+  "title": "SNT Dynamic Block js render",
   "category": "snt-block-category",
   "icon": "lightbulb",
   "attributes": {
@@ -15,6 +15,5 @@
   "supports": {
     "html": false
   },
-  "editorScript": "file:./dynamic-block-render-file.js",
-  "render": "file:./render.php"
+  "editorScript": "file:./js-render.js"
 }

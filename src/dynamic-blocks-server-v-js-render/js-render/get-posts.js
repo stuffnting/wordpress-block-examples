@@ -21,15 +21,15 @@ function ListPosts({ posts }) {
 /**
  * Memo prevents GetPosts from rerender when perPage has not changed.
  *
- * @see {@link https://reactjs.org/docs/react-api.html#reactmemo}
+ * @see https://reactjs.org/docs/react-api.html#reactmemo
  */
-export const GetPosts = memo(({ perPage }) => {
+export const GetPosts = memo(({ pagesToShow }) => {
   const {
     isResolving,
     hasResolved,
     records: posts,
   } = useEntityRecords("postType", "post", {
-    per_page: 5,
+    per_page: pagesToShow,
   });
 
   if (isResolving) {

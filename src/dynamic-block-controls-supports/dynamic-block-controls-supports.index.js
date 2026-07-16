@@ -4,16 +4,19 @@
 import { __ } from "@wordpress/i18n";
 import { registerBlockType } from "@wordpress/blocks";
 import { useBlockProps } from "@wordpress/block-editor";
+
+// Only needed for server-side render
 import ServerSideRender from "@wordpress/server-side-render";
-import { RawHTML } from "@wordpress/element";
-import { useServerSideRender } from "@wordpress/server-side-render";
 
 /**
  * Local dependencies
  */
-import { GetPosts } from "./get-posts.js";
-import { PostListTitle } from "./post-list-title.js";
+
+// Only needed for JS render
+// import { GetPosts } from "./get-posts.js";
+// import { PostListTitle } from "./post-list-title.js";
 import { TheInspectorControls } from "./the-inspector-controls.js";
+
 import metadata from "./block.json";
 import scss from "./style.scss";
 
@@ -21,6 +24,10 @@ registerBlockType(metadata.name, {
   edit: (props) => {
     const blockProps = useBlockProps();
     const { attributes } = props;
+
+    /**
+     * Server-side render
+     */
 
     return (
       <>
@@ -30,28 +37,10 @@ registerBlockType(metadata.name, {
         </div>
       </>
     );
-    /*     const { content, status, error } = useServerSideRender({
-      attributes,
-      block: metadata.name,
-    });
 
-    if (status === "loading") {
-      return <div>Loading...</div>;
-    }
-
-    if (status === "error") {
-      return <div>Error: {error}</div>;
-    }
-
-    return (
-      <>
-        <TheInspectorControls parentProps={props} />
-        <div {...blockProps}>
-          <RawHTML>{content}</RawHTML>
-        </div>
-      </>
-    ); */
-
+    /**
+     * JS render
+     */
     /*     return (
       <>
         <TheInspectorControls parentProps={props} />

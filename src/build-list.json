@@ -29,13 +29,16 @@
   "dynamic-block-render-function": {
     "include": false
   },
+  "dynamic-blocks-server-v-js-render": {
+    "include": true
+  },
   "dynamic-block-inner-blocks": {
     "include": false
   },
-  "dynamic-block-inspector-controls-supports": {
-    "include": true
+  "dynamic-block-controls-supports": {
+    "include": false
   },
   "php-only-registration": {
-    "include": true
+    "include": false
   }
 }

@@ -19,7 +19,7 @@ function ListPosts({ posts }) {
 }
 
 /**
- * Memo prevents GetPosts from rerendering when perPage has not changed.
+ * Memo prevents GetPosts from rerender when perPage has not changed.
  *
  * @see https://reactjs.org/docs/react-api.html#reactmemo
  */

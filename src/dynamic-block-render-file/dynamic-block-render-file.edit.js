@@ -13,7 +13,7 @@ export default function Edit({ attributes, setAttributes }) {
         <PanelBody title="Query Settings">
           <RangeControl
             label="Number of pages"
-            value={5}
+            value={pagesToShow}
             min={1}
             max={10}
             onChange={(value) => setAttributes({ pagesToShow: value })}

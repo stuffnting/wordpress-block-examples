@@ -1,7 +1,7 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "snt/dynamic-block-inspector-controls-supports",
+  "name": "snt/dynamic-block-controls-supports",
   "title": "SNT Dynamic Inspector Controls Supports",
   "icon": "lightbulb",
   "category": "snt-block-category",
@@ -39,7 +39,7 @@
       "default": false
     }
   },
-  "editorScript": "file:./dynamic-block-inspector-controls-supports.index.js",
-  "style": "file:./style-dynamic-block-inspector-controls-supports.index.css",
+  "editorScript": "file:./dynamic-block-controls-supports.index.js",
+  "style": "file:./style-dynamic-block-controls-supports.index.css",
   "render": "file:./render.php"
 }
