@@ -41,10 +41,13 @@
   "dynamic-blocks-server-v-js-render": {
     "include": false
   },
+  "inner-blocks": {
+    "include": true
+  },
   "php-only-registration": {
     "include": false
   },
   "richtext": {
-    "include": true
+    "include": false
   }
 }

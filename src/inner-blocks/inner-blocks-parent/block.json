@@ -1,0 +1,10 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "snt/inner-blocks-parent",
+  "title": "SNT Inner Blocks",
+  "description": "Demonstrates how to handle inner-blocks, including the use of templates.",
+  "icon": "lightbulb",
+  "category": "snt-block-category",
+  "editorScript": "file:./inner-blocks-parent.js"
+}
