@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "version": "1.0.0",
   "name": "snt/dynamic-block-render-file",
-  "title": "SNT Dynamic Block Render FileServer-Side render",
+  "title": "SNT Dynamic Block Render File Server-Side render",
   "category": "snt-block-category",
   "icon": "lightbulb",
   "attributes": {

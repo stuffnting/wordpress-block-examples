@@ -39,7 +39,7 @@
       "default": false
     }
   },
-  "editorScript": "file:./dynamic-block-controls-supports.index.js",
-  "style": "file:./style-dynamic-block-controls-supports.index.css",
+  "editorScript": "file:./dynamic-block-controls-supports.js",
+  "style": "file:./style-dynamic-block-controls-supports.css",
   "render": "file:./render.php"
 }
