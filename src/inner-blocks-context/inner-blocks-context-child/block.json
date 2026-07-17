@@ -1,0 +1,14 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "snt/inner-blocks-context-child",
+  "title": "SNT Inner Blocks Context Child",
+  "description": "Demonstrates how to handle inner-blocks with context.",
+  "icon": "lightbulb",
+  "category": "snt-block-category",
+  "ancestor": ["snt/inner-blocks-context-parent"],
+  "usesContext": ["snt/myNumber"],
+  "editorScript": "file:./inner-blocks-context-child.js",
+  "style": "file:./style-inner-blocks-context-child.css",
+  "render": "file:./render.php"
+}

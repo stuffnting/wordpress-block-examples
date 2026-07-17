@@ -2,6 +2,7 @@ import defaultConfig from "@wordpress/scripts/config/webpack.config.js";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
+import { sep } from "node:path";
 
 // Read and parse the build-list.json safely
 const exampleJSON = readFileSync(new URL("./src/build-list.json", import.meta.url), "utf8");
@@ -34,7 +35,8 @@ const defaultEntryPoints = defaultConfig.entry();
 // Remove examples in the omit list from WP's default entry point list
 const filteredEntryPoints = Object.keys(defaultEntryPoints).reduce((acc, entryName) => {
   // Check if the current entry path matches any omitted folder name
-  const shouldOmit = omitFromBuildList.some((folder) => entryName.includes(folder));
+  //const shouldOmit = omitFromBuildList.some((folder) => entryName.split(sep)[0].match(folder));
+  const shouldOmit = omitFromBuildList.some((folder) => entryName.split(sep)[0] === folder);
 
   if (!shouldOmit) {
     acc[entryName] = defaultEntryPoints[entryName];
@@ -42,6 +44,13 @@ const filteredEntryPoints = Object.keys(defaultEntryPoints).reduce((acc, entryNa
 
   return acc;
 }, {});
+
+console.log("##### Omit #####");
+console.log(omitFromBuildList);
+console.log("##### Include #####");
+console.log(includeInBuildList);
+console.log("##### Entry Point list #####");
+console.log(filteredEntryPoints);
 
 /**
  * Make new copyPlugin patterns

@@ -42,6 +42,9 @@
     "include": false
   },
   "inner-blocks": {
+    "include": false
+  },
+  "inner-blocks-context": {
     "include": true
   },
   "php-only-registration": {
