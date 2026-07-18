@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "snt/meta-boxes",
+  "version": "0.1.0",
+  "title": "SNT Meta Boxes",
+  "category": "snt-block-category",
+  "icon": "lightbulb",
+  "description": "Demonstrate various meta boxes.",
+  "attributes": {
+    "sntMeta": {
+      "type": "string",
+      "_comment": "The meta field key must not be private, i.e. must not start with `_`",
+      "default": "_snt_meta_boxes_field"
+    }
+  },
+  "supports": {
+    "html": false,
+    "multiple": false
+  },
+  "usesContext": ["postId", "postType"],
+  "textdomain": "snt",
+  "editorScript": "file:./meta-boxes.js",
+  "style": "file:./style-meta-boxes.css",
+  "render": "file:./render.php"
+}

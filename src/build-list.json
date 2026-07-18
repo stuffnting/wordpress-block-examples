@@ -45,9 +45,15 @@
     "include": false
   },
   "inner-blocks-context": {
-    "include": true
+    "include": false
   },
   "php-only-registration": {
+    "include": false
+  },
+  "meta-boxes": {
+    "include": true
+  },
+  "meta-richtext": {
     "include": false
   },
   "richtext": {

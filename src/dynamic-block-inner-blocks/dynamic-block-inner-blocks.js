@@ -11,7 +11,7 @@ import { GetPosts } from "./get-posts.js";
 import metadata from "./block.json";
 import scss from "./style.scss";
 
-const allowedBlocks = ["core/paragraph", "core/heading", "core/list"];
+const allowedBlocks = ["core/paragraph", "core/heading", "core/list", "core/list-item"];
 
 registerBlockType(metadata.name, {
   edit: () => {
@@ -23,7 +23,7 @@ registerBlockType(metadata.name, {
         <h2>Last Posts</h2>
         <p>The hot FIVE!</p>
         <GetPosts />
-        {innerBlockProps.children}
+        <div {...innerBlockProps} />
       </div>
     );
   },

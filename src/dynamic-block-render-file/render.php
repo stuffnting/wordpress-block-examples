@@ -1,4 +1,15 @@
-<?php
+<?
+
+/**
+ * Available variables:
+ * 
+ * $attributes (array)
+ * $content (string)
+ * $block (WP_Block object)
+ *    $block->name – The block name (e.g., my-plugin/my-custom-block).
+ *    $block->context – An array containing values passed down from parent blocks (like postId or postType).
+ *    $block->parsed_block – The raw block structure array parsed by WordPress.
+ */
 
 $pages = new WP_Query(['post_type' => 'page', 'posts_per_page' => $attributes['pagesToShow']]);
 
