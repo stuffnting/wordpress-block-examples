@@ -1,0 +1,11 @@
+/* Items in the inspector use grid. To span full width use this. */
+
+.full-width-control-wrapper {
+  grid-column: 1 / -1;
+}
+
+.wp-block-snt-inspector-controls {
+  background-color: salmon;
+  color: aquamarine;
+  padding: 0.5em;
+}

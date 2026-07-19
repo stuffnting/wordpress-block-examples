@@ -47,11 +47,14 @@
   "inner-blocks-context": {
     "include": false
   },
+  "inspector-controls": {
+    "include": true
+  },
   "php-only-registration": {
     "include": false
   },
   "meta-boxes": {
-    "include": true
+    "include": false
   },
   "meta-richtext": {
     "include": false
