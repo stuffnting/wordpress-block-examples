@@ -11,6 +11,7 @@ import { registerBlockType } from "@wordpress/blocks";
  */
 import metadata from "./block.json";
 import css from "./editor.scss";
+import "./core-block-extra-panel.js";
 
 registerBlockType(metadata, {
   edit: () => {
@@ -19,7 +20,7 @@ registerBlockType(metadata, {
         {/* Add panels to the setting and styles tabs */}
         <InspectorControls>
           <PanelBody title={__("Custom Block Controls", "snt")}>
-            {__("Custom block controls added to setting tab because there is no group prop", "snt")}
+            {__("Custom block controls added to top of the setting tab because there is no group prop", "snt")}
           </PanelBody>
         </InspectorControls>
         <InspectorControls group="styles">
@@ -51,6 +52,7 @@ registerBlockType(metadata, {
         {/* Add to the Advanced group */}
         <InspectorAdvancedControls>{__("I'm in the advanced group!", "snt")}</InspectorAdvancedControls>
         <InspectorControls group="advanced">{__("I'm in the advanced group too!", "snt")}</InspectorControls>
+        <h2>Look in the Block Inspector</h2>
       </div>
     );
   },
