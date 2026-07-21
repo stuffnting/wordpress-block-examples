@@ -1,7 +1,6 @@
 import defaultConfig from "@wordpress/scripts/config/webpack.config.js";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import { readFileSync } from "fs";
-import { fileURLToPath } from "url";
 import { sep } from "node:path";
 
 // Read and parse the build-list.json safely
@@ -27,33 +26,13 @@ const processedExampleList = Object.entries(exampleList).reduce(
 const omitFromBuildList = processedExampleList.omit;
 const includeInBuildList = processedExampleList.include;
 
-/**
- * Make a new entry point list
- */
-const defaultEntryPoints = defaultConfig.entry();
-
-// Remove examples in the omit list from WP's default entry point list
-const filteredEntryPoints = Object.keys(defaultEntryPoints).reduce((acc, entryName) => {
-  // Check if the current entry path matches any omitted folder name
-  //const shouldOmit = omitFromBuildList.some((folder) => entryName.split(sep)[0].match(folder));
-  const shouldOmit = omitFromBuildList.some((folder) => entryName.split(sep)[0] === folder);
-
-  if (!shouldOmit) {
-    acc[entryName] = defaultEntryPoints[entryName];
-  }
-
-  return acc;
-}, {});
-
 console.log("##### Omit #####");
 console.log(omitFromBuildList);
 console.log("##### Include #####");
 console.log(includeInBuildList);
-console.log("##### Entry Point list #####");
-console.log(filteredEntryPoints);
 
 /**
- * Make new copyPlugin patterns
+ * Static files copied regardless of which examples are included
  */
 const staticCopy = [
   {
@@ -68,43 +47,90 @@ const staticCopy = [
   },
 ];
 
-// Get the original JSON pattern so that the original transform function can be used
-const jsonPattern = defaultConfig.plugins[2].patterns[0];
+/**
+ * Filter a config's entry points, dropping anything in the omit list.
+ * Works whether `entry` is a plain object or (as wp-scripts uses)
+ * a dynamic-entry function that must be invoked to get the object.
+ */
+function getFilteredEntryPoints(config) {
+  const entryPoints = typeof config.entry === "function" ? config.entry() : config.entry;
 
-// Make a list of copy patterns for the block.json and *.php files in the included examples only
-const copyPatterns = includeInBuildList.reduce((acc, example) => {
-  return [
-    ...acc,
-    {
-      ...jsonPattern,
-      from: `${example}/**/block.json`,
-    },
-    {
-      from: `${example}/**/*.php`,
-      context: "src",
-      noErrorOnMissing: false,
-    },
-  ];
-}, []);
+  return Object.keys(entryPoints).reduce((acc, entryName) => {
+    const shouldOmit = omitFromBuildList.some((folder) => entryName.split(sep)[0] === folder);
 
-// Remove WP's default copyPlugin entry
-const filteredPlugins = defaultConfig.plugins.filter((plugin) => plugin.constructor.name !== "CopyPlugin");
+    if (!shouldOmit) {
+      acc[entryName] = entryPoints[entryName];
+    }
 
-// Make a new copyPlugin
-const newPlugins = [
-  ...filteredPlugins,
-  new CopyWebpackPlugin({
-    patterns: [...copyPatterns, ...staticCopy],
-  }),
-];
+    return acc;
+  }, {});
+}
+
+/**
+ * Build the block.json / *.php copy patterns for the included examples,
+ * reusing the default plugin's block.json transform function.
+ */
+function buildCopyPatterns(jsonPattern) {
+  return includeInBuildList.reduce((acc, example) => {
+    return [
+      ...acc,
+      {
+        ...jsonPattern,
+        from: `${example}/**/block.json`,
+      },
+      {
+        from: `${example}/**/*.php`,
+        context: "src",
+        noErrorOnMissing: false,
+      },
+    ];
+  }, []);
+}
+
+/**
+ * Apply entry filtering + (where present) CopyWebpackPlugin replacement
+ * to a single webpack config object.
+ */
+function transformConfig(config) {
+  const filteredEntryPoints = getFilteredEntryPoints(config);
+
+  // Only scriptConfig ships a CopyWebpackPlugin by default; moduleConfig doesn't.
+  const copyPluginIndex = config.plugins.findIndex((plugin) => plugin?.constructor?.name === "CopyPlugin");
+
+  let newPlugins = config.plugins;
+
+  if (copyPluginIndex !== -1) {
+    const existingCopyPlugin = config.plugins[copyPluginIndex];
+    const jsonPattern = existingCopyPlugin.patterns[0];
+    const copyPatterns = buildCopyPatterns(jsonPattern);
+
+    newPlugins = [
+      ...config.plugins.filter((_, i) => i !== copyPluginIndex),
+      new CopyWebpackPlugin({
+        patterns: [...copyPatterns, ...staticCopy],
+      }),
+    ];
+  }
+
+  console.log("##### Entry Point list #####");
+  console.log(filteredEntryPoints);
+
+  return {
+    ...config,
+    entry: filteredEntryPoints,
+    plugins: newPlugins,
+  };
+}
 
 /**
  * Export
  */
 export default (env, argv) => {
-  return {
-    ...defaultConfig,
-    entry: filteredEntryPoints, // Pass the static filtered object directly
-    plugins: newPlugins,
-  };
+  // With --experimental-modules, wp-scripts exports [scriptConfig, moduleConfig].
+  // Without it, it exports a single config object.
+  if (Array.isArray(defaultConfig)) {
+    return defaultConfig.map(transformConfig);
+  }
+
+  return transformConfig(defaultConfig);
 };
