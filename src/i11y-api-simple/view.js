@@ -1,9 +1,9 @@
 /**
  * WordPress dependencies
  */
-import { store, getContext } from '@wordpress/interactivity';
+import { store, getContext } from "@wordpress/interactivity";
 
-const { state } = store('myprefix-simple-store', {
+const { state } = store("snt-simple-store", {
   state: {
     get themeText() {
       return state.isDark ? state.darkText : state.lightText;

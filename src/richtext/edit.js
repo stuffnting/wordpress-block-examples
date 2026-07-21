@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import { RichText, useBlockProps } from '@wordpress/block-editor';
+import { __ } from "@wordpress/i18n";
+import { RichText, useBlockProps } from "@wordpress/block-editor";
 
 export const edit = (props) => {
   const { attributes, setAttributes } = props;
@@ -13,25 +13,25 @@ export const edit = (props) => {
     <div {...blockProps}>
       {/* Wrapper block in editor is <div>, in save <section> */}
       <RichText
-        tagName='h1'
-        className='myprefix-heading'
+        tagName="h1"
+        className="snt-heading"
         value={heading}
         onChange={(value) => setAttributes({ heading: value })}
-        placeholder={__('Write heading…', 'textDomain')}
+        placeholder={__("Write heading…", "textDomain")}
       />
       <RichText
-        tagName='p'
-        className='myprefix-content'
+        tagName="p"
+        className="snt-content"
         value={content}
         onChange={(value) => setAttributes({ content: value })}
-        placeholder={__('Write some content…', 'textDomain')}
+        placeholder={__("Write some content…", "textDomain")}
       />
       <RichText
-        tagName='p'
-        className='myprefix-footer'
+        tagName="p"
+        className="snt-footer"
         value={footer}
         onChange={(value) => setAttributes({ footer: value })}
-        placeholder={__('Write a footer…', 'textDomain')}
+        placeholder={__("Write a footer…", "textDomain")}
       />
     </div>
   );

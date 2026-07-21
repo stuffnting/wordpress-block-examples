@@ -39,7 +39,10 @@
     "include": false
   },
   "dynamic-blocks-server-v-js-render": {
-    "include": false
+    "include": true
+  },
+  "i11y-api-simple": {
+    "include": true
   },
   "inner-blocks": {
     "include": false
