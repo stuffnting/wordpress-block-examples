@@ -1,0 +1,10 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "version": "1.0.0",
+  "name": "snt/svg-icon",
+  "title": "SNT SVG Icon",
+  "category": "snt-block-category",
+  "icon": "lightbulb",
+  "editorScript": "file:./svg-icon.js"
+}

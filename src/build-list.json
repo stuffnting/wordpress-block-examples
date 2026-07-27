@@ -39,10 +39,13 @@
     "include": false
   },
   "dynamic-blocks-server-v-js-render": {
-    "include": true
+    "include": false
+  },
+  "i11y-api-g-l-d": {
+    "include": false
   },
   "i11y-api-simple": {
-    "include": true
+    "include": false
   },
   "inner-blocks": {
     "include": false
@@ -51,7 +54,7 @@
     "include": false
   },
   "inspector-controls": {
-    "include": true
+    "include": false
   },
   "php-only-registration": {
     "include": false
@@ -64,5 +67,8 @@
   },
   "richtext": {
     "include": false
+  },
+  "svg-icon": {
+    "include": true
   }
 }
