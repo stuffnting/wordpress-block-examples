@@ -5,6 +5,11 @@
  * Update URI: false
  */
 
+
+/**
+ * Register the custom category which will contain all of the block examples.
+ */
+
 add_filter("block_categories_all", "snt_register_block_categories");
 
 function snt_register_block_categories($block_categories) {

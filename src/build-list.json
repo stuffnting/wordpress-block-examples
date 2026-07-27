@@ -68,7 +68,10 @@
   "richtext": {
     "include": false
   },
-  "svg-icon": {
+  "settings-page": {
     "include": true
+  },
+  "svg-icon": {
+    "include": false
   }
 }
